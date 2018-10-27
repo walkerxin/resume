@@ -1,0 +1,36 @@
+.site-welcome {
+    width: 70px;
+    height: 70px;
+    border: 1px solid red;
+    position: relative;
+  }
+  
+  .site-welcome::before,
+  .site-welcome::after {
+    content: '';
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: preload 1.6s linear infinite;
+  }
+  
+  .site-welcome::after {
+    animation-delay: 0.8s;
+  } 
+  
+  @keyframes preload {
+    0% {
+      transform: scale(0, 0);
+      opacity: 0.6;
+    }
+    
+    100% {
+      transform: scale(1,1);
+      opacity: 0;
+    }
+  }
