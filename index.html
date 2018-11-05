@@ -43,7 +43,7 @@
     <div id="siteWelcome" class="site-welcome active">
         <div class="loading"></div>
     </div>
-    <div class="topNavBar">
+    <div id="topNavBarId" class="topNavBar">
         <div class="topNavBarDiv clearfix">
             <a class="logo" href="#">
                 <span class="rs">RS</span><span class="card">card</span>
@@ -196,6 +196,15 @@
         setTimeout(function() {
             siteWelcome.classList.remove('active')
         }, 5000)
+
+        window.onscroll = function(e) {
+            // window.scrollY 返回文档在垂直方向已滚动的像素值
+            if(window.scrollY > 0) {
+                topNavBarId.classList.add('active')
+            }else {
+                topNavBarId.classList.remove('active')
+            }
+        }
 
         portfolio1.onclick = function() {
             portfolioBar.className = 'bar state-1'

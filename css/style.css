@@ -39,10 +39,20 @@ ol {
     padding: 20px 0;
     position: fixed;
     width: 100%;
+    color: #BEC0C3;
+    transition: all .3s;
+}
+
+.topNavBar.active {
+    background: #fff;
+    padding: 8px 0px;
+    color: #3d4451;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
 
 .topNavBar .topNavBarDiv {
-    padding: 0 150px;
+    padding: 0 158px;
 }
 
 .topNavBar .logo {
@@ -58,13 +68,17 @@ ol {
     padding-top: 8px;
 }
 
+.topNavBar.active nav {
+    padding-top: 4px;
+}
+
 .topNavBar .logo>.rs {
     color: #E8676B;
 }
 
 .topNavBar .logo>.card {
     color: #9A9DA2;
-    margin-left: 4px;
+    margin-left: 3px;
 }
 
 .topNavBar nav>ul>li {
@@ -84,11 +98,11 @@ ol {
 }
 
 .topNavBar nav>ul>li>a {
-    font-size: 12px;
-    color: #BEC0C3;
+    font-size: 14px;
+    color: inherit;
     font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     display: block;
 }
 
