@@ -217,6 +217,7 @@
         </div>
     </section>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script>
         setTimeout(function() {
             siteWelcome.classList.remove('active')
@@ -230,7 +231,14 @@
                 topNavBarId.classList.remove('sticky')
             }
         }
-        
+
+        // Setup the animation loop.
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
         let liTags = document.querySelectorAll('#topNavBarId nav>ul>li')
         for(let i=0; i<liTags.length; i++) {
             
@@ -250,7 +258,24 @@
                 // aTag.href 取值时浏览器会自动处理成 "当前网址+ a中href属性的值"
                 let findDiv = document.querySelector(aTag.getAttribute('href'))
                 if(findDiv) {
-                    window.scrollTo(0, findDiv.offsetTop - 100)
+                    
+                    let currentTop = window.scrollY
+                    let targetTop = findDiv.offsetTop - 100
+                    let s = targetTop - currentTop
+
+                    // 假设100px 用时 50ms
+                    let t = Math.abs(s / 100)  * 50
+                    t = t > 500 ? 500 : t
+
+                    var coords = { y: window.scrollY };     // 起始位置
+                    var tween = new TWEEN.Tween(coords)
+                            .to({ y: findDiv.offsetTop - 100 }, t)      // 目标位置, 花费时间
+                            .easing(TWEEN.Easing.Quadratic.InOut)       // 采用的 缓动类型
+                            .onUpdate(function() {                      // 每次更新位置时触发，体现在传入的位置变量
+                                window.scrollTo(0, coords.y)        // 如何更新界面
+                            })
+                            .start();       // 开始缓动
+
                 }
                 
             }
