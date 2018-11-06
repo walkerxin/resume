@@ -51,13 +51,13 @@
             <nav>
                 <ul class="clearfix">
                     <li>
-                        <a href="#">关于</a>
+                        <a href="#siteAbout">关于</a>
                     </li>
                     <li>
-                        <a href="#">技能</a>
+                        <a href="#siteSkills">技能</a>
                     </li>
                     <li>
-                        <a href="#">作品</a>
+                        <a href="#siteProfile">作品</a>
                         <ul class="subMenu">
                             <li>作品1</li>
                             <li>作品2</li>
@@ -66,7 +66,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">博客</a>
+                        <a href="#siteBlogs">博客</a>
                         <ul class="subMenu">
                             <li>博客1</li>
                             <li>博客2</li>
@@ -74,13 +74,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">日历</a>
+                        <a href="#siteCalandar">日历</a>
                     </li>
                     <li>
-                        <a href="#">联系方式</a>
+                        <a href="#siteContact">联系方式</a>
                     </li>
                     <li>
-                        <a href="#">其他</a>
+                        <a href="#siteOthers">其他</a>
                     </li>
                 </ul>
             </nav>
@@ -89,7 +89,7 @@
     <div class="banner">
         <div class="masker"></div>
     </div>
-    <main>
+    <main id="siteAbout">
         <div class="userCard contentBox">
             <div class="avatarAndProfile clearfix">
                 <div class="avatar">
@@ -150,7 +150,7 @@
         </p>
     </main>
 
-    <section class="skills contentBox">
+    <section id="siteSkills" class="skills contentBox">
         <h2>专业技能</h2>
         <ol class="clearfix">
             <li>
@@ -191,7 +191,7 @@
         </ol>
     </section>
 
-    <section class="portfolio contentBox" style="">
+    <section id="siteProfile" class="portfolio contentBox" style="">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -231,7 +231,7 @@
             }
         }
         
-        let liTags = document.querySelectorAll('#topNavBarId nav ul>li')
+        let liTags = document.querySelectorAll('#topNavBarId nav>ul>li')
         for(let i=0; i<liTags.length; i++) {
             
             liTags[i].onmouseover = function(x) {
@@ -240,6 +240,19 @@
             
             liTags[i].onmouseout = function(x) {
                 x.currentTarget.classList.remove('active')
+            }
+
+            liTags[i].onclick = function(x) {
+
+                x.preventDefault()
+                
+                let aTag = x.currentTarget.getElementsByTagName('a')[0]
+                // aTag.href 取值时浏览器会自动处理成 "当前网址+ a中href属性的值"
+                let findDiv = document.querySelector(aTag.getAttribute('href'))
+                if(findDiv) {
+                    window.scrollTo(0, findDiv.offsetTop - 100)
+                }
+                
             }
 
         }

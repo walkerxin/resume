@@ -46,7 +46,7 @@ ol {
 .topNavBar.sticky {
     background: #fff;
     padding: 8px 0px;
-    color: #3d4451;
+    color: inherit;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
@@ -119,6 +119,7 @@ ol {
     position: absolute;
     top: 100%;
     right: 0;
+    color: #3d4451;
     background: #fff;
     padding: 5px 0;
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
@@ -148,7 +149,7 @@ ol {
 }
 
 .topNavBar nav>ul>li .subMenu li:hover {
-    background: #ccc;
+    background: #fafafa;
 }
 
 .topNavBar nav>ul>li>a {
