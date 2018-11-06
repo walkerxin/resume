@@ -50,14 +50,14 @@
             </a>
             <nav>
                 <ul class="clearfix">
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">技能</a></li>
-                    <li><a href="#">作品</a></li>
-                    <li><a href="#">博客</a></li>
-                    <li><a href="#">日历</a></li>
-                    <li><a href="#">联系方式</a></li>
-                    <li><a href="#">其他</a></li>
-                </ul>
+                        <li><a href="#">关于</a></li>
+                        <li><a href="#">技能</a></li>
+                        <li><a href="#">作品</a></li>
+                        <li><a href="#">博客</a></li>
+                        <li><a href="#">日历</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">其他</a></li>
+                    </ul>
             </nav>
         </div>
     </div>
@@ -200,9 +200,9 @@
         window.onscroll = function(e) {
             // window.scrollY 返回文档在垂直方向已滚动的像素值
             if(window.scrollY > 0) {
-                topNavBarId.classList.add('active')
+                topNavBarId.classList.add('sticky')
             }else {
-                topNavBarId.classList.remove('active')
+                topNavBarId.classList.remove('sticky')
             }
         }
 

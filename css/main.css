@@ -43,7 +43,7 @@ ol {
     transition: all .3s;
 }
 
-.topNavBar.active {
+.topNavBar.sticky {
     background: #fff;
     padding: 8px 0px;
     color: #3d4451;
@@ -68,7 +68,7 @@ ol {
     padding-top: 8px;
 }
 
-.topNavBar.active nav {
+.topNavBar.sticky nav {
     padding-top: 4px;
 }
 
