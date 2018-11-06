@@ -86,7 +86,8 @@ ol {
     padding: 1px 0;
     margin-left: 17px;
     margin-right: 17px;
-    border-top: 3px solid transparent;    
+    border-top: 3px solid transparent;
+    position: relative;
 }
 
 .topNavBar nav>ul>li::after {
@@ -111,6 +112,43 @@ ol {
     100% {
         width: 100%;
     }
+}
+
+.topNavBar nav>ul>li .subMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    padding: 5px 0;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+.topNavBar nav>ul>li.active .subMenu {
+    display: block;
+    animation: subMenuSlider 0.3s;
+}
+
+@keyframes subMenuSlider {
+    0% {
+        margin-right: 100%;
+        opacity: 0;
+    }
+    100% {
+        margin-right: 0;
+        opacity: 1;
+    }
+}
+
+.topNavBar nav>ul>li .subMenu li {
+    white-space: nowrap;
+    text-align: right;
+    cursor: pointer;
+    padding: 5px 25px;
+}
+
+.topNavBar nav>ul>li .subMenu li:hover {
+    background: #ccc;
 }
 
 .topNavBar nav>ul>li>a {

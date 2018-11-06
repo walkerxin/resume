@@ -58,9 +58,20 @@
                     </li>
                     <li>
                         <a href="#">作品</a>
+                        <ul class="subMenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                            <li>作品4</li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#">博客</a>
+                        <ul class="subMenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#">日历</a>
@@ -220,6 +231,19 @@
             }
         }
         
+        let liTags = document.querySelectorAll('#topNavBarId nav ul>li')
+        for(let i=0; i<liTags.length; i++) {
+            
+            liTags[i].onmouseover = function(x) {
+                x.currentTarget.classList.add('active')
+            }
+            
+            liTags[i].onmouseout = function(x) {
+                x.currentTarget.classList.remove('active')
+            }
+
+        }
+
         portfolio1.onclick = function() {
             portfolioBar.className = 'bar state-1'
         }
