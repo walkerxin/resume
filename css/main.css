@@ -82,18 +82,24 @@ ol {
 }
 
 .topNavBar nav>ul>li {
-    padding: 1px 0;
-}
-
-.topNavBar nav>ul>li {
     float: left;
+    padding: 1px 0;
     margin-left: 17px;
     margin-right: 17px;
-    border-top: 3px solid transparent;
+    border-top: 3px solid transparent;    
 }
 
-.topNavBar nav>ul>li:hover .slider {
+.topNavBar nav>ul>li::after {
+    content: '';
+    display: block;
     height: 3px;
+}
+
+.topNavBar nav>ul>li.active {
+    border-bottom-width: 0;
+}
+
+.topNavBar nav>ul>li.active::after {
     background-color: #E8676B;
     animation: menuSlider 0.5s;
 }
