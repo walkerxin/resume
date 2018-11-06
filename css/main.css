@@ -90,11 +90,21 @@ ol {
     margin-left: 17px;
     margin-right: 17px;
     border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
 }
 
-.topNavBar nav>ul>li:hover {
-    border-bottom: 3px solid #E8676B;
+.topNavBar nav>ul>li:hover .slider {
+    height: 3px;
+    background-color: #E8676B;
+    animation: menuSlider 0.5s;
+}
+
+@keyframes menuSlider {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 .topNavBar nav>ul>li>a {
