@@ -32,10 +32,6 @@
             bottom: 0;
             z-index: 2;
         }
-
-        .noHeight {
-            height: 0;
-        }
     </style>
 </head>
 
@@ -43,7 +39,7 @@
     <div id="siteWelcome" class="site-welcome active">
         <div class="loading"></div>
     </div>
-    <div id="topNavBarId" class="topNavBar">
+    <div id="topNavBarId" class="topNavBar offset">
         <div class="topNavBarDiv clearfix">
             <a class="logo" href="#">
                 <span class="rs">RS</span><span class="card">card</span>
@@ -89,7 +85,7 @@
     <div class="banner">
         <div class="masker"></div>
     </div>
-    <main id="siteAbout" data-x>
+    <main id="siteAbout" class="offset" data-x>
         <div class="userCard contentBox">
             <div class="avatarAndProfile clearfix">
                 <div class="avatar">
@@ -150,7 +146,7 @@
         </p>
     </main>
 
-    <section id="siteSkills" class="skills contentBox" data-x>
+    <section id="siteSkills" class="skills contentBox offset" data-x>
         <h2>专业技能</h2>
         <ol class="clearfix">
             <li>
@@ -164,6 +160,7 @@
                 <div class="progressBar">
                     <div class="progress" style="width:30%;"></div>
                 </div>
+            </li>
             <li>
                 <span>jQuery</span>
                 <div class="progressBar">
@@ -191,7 +188,7 @@
         </ol>
     </section>
 
-    <section id="siteProfile" class="portfolio contentBox" data-x>
+    <section id="siteProfile" class="portfolio contentBox offset" data-x>
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -222,6 +219,7 @@
         
         siteWelcome.classList.remove('active')
         highLight()
+        topNavBarId.classList.remove('offset')
 
         window.onscroll = function(e) {
             // window.scrollY 返回文档在垂直方向已滚动的像素值
@@ -265,8 +263,8 @@
                     let targetTop = findDiv.offsetTop - 100
                     let s = targetTop - currentTop
 
-                    // 假设100px 用时 50ms
-                    let t = Math.abs(s / 100)  * 50
+                    // 假设100px 用时 300ms
+                    let t = Math.abs(s / 100)  * 300
                     t = t > 500 ? 500 : t
 
                     var coords = { y: window.scrollY };     // 起始位置
@@ -285,14 +283,26 @@
         }
 
         function highLight() {
+
             let currentTop = window.scrollY
+            let middleTop = window.scrollY + document.body.clientHeight / 2
             let xTags = document.querySelectorAll('[data-x]')
-            let minIdx = 0
+            let minIdx = 0, middleMinIdx = 0
             for(let i=1; i<xTags.length; i++) {
                 if(Math.abs(xTags[minIdx].offsetTop - currentTop) > Math.abs(xTags[i].offsetTop - currentTop)) {
                     minIdx = i
                 }
+                if(Math.abs(xTags[middleMinIdx].offsetTop - middleTop) > Math.abs(xTags[i].offsetTop - middleTop)) {
+                    middleMinIdx = i
+                }
             }
+
+            if(middleMinIdx > 0) {
+                for(let i=0; i<middleMinIdx; i++) {
+                    xTags[i].classList.remove('offset')
+                }
+            }
+            xTags[middleMinIdx].classList.remove('offset')
 
             let aTag = document.querySelector('#topNavBarId nav a[href="#' + xTags[minIdx].id + '"]')
             let allLi = aTag.parentNode.parentElement.children
@@ -300,6 +310,7 @@
                 allLi[i].classList.remove('highlight')
             }
             aTag.parentNode.classList.add('highlight')
+
         }
 
         portfolio1.onclick = function() {

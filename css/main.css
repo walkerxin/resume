@@ -299,6 +299,18 @@ section.skills ol {
     transition: box-shadow 0.3s
 }
 
+[data-x] {
+    transition: all .5s;
+}
+
+[data-x].offset {
+    transform: translateY(100px);
+}
+
+.topNavBar.offsetTop {
+    transform: translateY(-100px);
+}
+
 main p.desc {
     text-align: center;
     font-size: 20px;
