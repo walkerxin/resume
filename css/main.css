@@ -354,6 +354,16 @@ section.portfolio ol>li {
     border-radius: 2px;
     background: #FAE0E0;
     margin-top: 5px;
+    overflow: hidden;
+}
+
+.progressBar>.progress {
+    transform: translateX(0);
+    transition: all 1s;
+}
+
+section.skills.offset .progressBar>.progress {
+    transform: translateX(-100%)
 }
 
 .progressBar>.progress,

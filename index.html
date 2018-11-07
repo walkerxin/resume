@@ -152,13 +152,13 @@
             <li>
                 <span>HTML 5 & CSS 3</span>
                 <div class="progressBar">
-                    <div class="progress" style="width:60%;"></div>
+                    <div class="progress" style="width:70%;"></div>
                 </div>
             </li>
             <li>
                 <span>JavaScript</span>
                 <div class="progressBar">
-                    <div class="progress" style="width:30%;"></div>
+                    <div class="progress" style="width:40%;"></div>
                 </div>
             </li>
             <li>
@@ -222,13 +222,7 @@
         topNavBarId.classList.remove('offset')
 
         window.onscroll = function(e) {
-            // window.scrollY 返回文档在垂直方向已滚动的像素值
-            if(window.scrollY > 0) {
-                topNavBarId.classList.add('sticky')
-            }else {
-                topNavBarId.classList.remove('sticky')
-            }
-
+            stickyOrNot()
             highLight()
         }
 
@@ -280,6 +274,15 @@
                 
             }
 
+        }
+
+        function stickyOrNot() {
+            // window.scrollY 返回文档在垂直方向已滚动的像素值
+            if(window.scrollY > 0) {
+                topNavBarId.classList.add('sticky')
+            }else {
+                topNavBarId.classList.remove('sticky')
+            }
         }
 
         function highLight() {
