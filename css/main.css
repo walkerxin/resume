@@ -96,11 +96,13 @@ ol {
     height: 3px;
 }
 
-.topNavBar nav>ul>li.active {
+.topNavBar nav>ul>li.active,
+.topNavBar nav>ul>li.highlight {
     border-bottom-width: 0;
 }
 
-.topNavBar nav>ul>li.active::after {
+.topNavBar nav>ul>li.active::after,
+.topNavBar nav>ul>li.highlight::after {
     background-color: #E8676B;
     animation: menuSlider 0.5s;
 }

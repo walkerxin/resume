@@ -89,7 +89,7 @@
     <div class="banner">
         <div class="masker"></div>
     </div>
-    <main id="siteAbout">
+    <main id="siteAbout" data-x>
         <div class="userCard contentBox">
             <div class="avatarAndProfile clearfix">
                 <div class="avatar">
@@ -150,7 +150,7 @@
         </p>
     </main>
 
-    <section id="siteSkills" class="skills contentBox">
+    <section id="siteSkills" class="skills contentBox" data-x>
         <h2>专业技能</h2>
         <ol class="clearfix">
             <li>
@@ -191,7 +191,7 @@
         </ol>
     </section>
 
-    <section id="siteProfile" class="portfolio contentBox" style="">
+    <section id="siteProfile" class="portfolio contentBox" data-x>
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -219,9 +219,9 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
     <script>
-        setTimeout(function() {
-            siteWelcome.classList.remove('active')
-        }, 1000)
+        
+        siteWelcome.classList.remove('active')
+        highLight()
 
         window.onscroll = function(e) {
             // window.scrollY 返回文档在垂直方向已滚动的像素值
@@ -230,6 +230,8 @@
             }else {
                 topNavBarId.classList.remove('sticky')
             }
+
+            highLight()
         }
 
         // Setup the animation loop.
@@ -238,7 +240,7 @@
             TWEEN.update(time);
         }
         requestAnimationFrame(animate);
-
+        
         let liTags = document.querySelectorAll('#topNavBarId nav>ul>li')
         for(let i=0; i<liTags.length; i++) {
             
@@ -280,6 +282,24 @@
                 
             }
 
+        }
+
+        function highLight() {
+            let currentTop = window.scrollY
+            let xTags = document.querySelectorAll('[data-x]')
+            let minIdx = 0
+            for(let i=1; i<xTags.length; i++) {
+                if(Math.abs(xTags[minIdx].offsetTop - currentTop) > Math.abs(xTags[i].offsetTop - currentTop)) {
+                    minIdx = i
+                }
+            }
+
+            let aTag = document.querySelector('#topNavBarId nav a[href="#' + xTags[minIdx].id + '"]')
+            let allLi = aTag.parentNode.parentElement.children
+            for(let i=0; i<allLi.length; i++) {
+                allLi[i].classList.remove('highlight')
+            }
+            aTag.parentNode.classList.add('highlight')
         }
 
         portfolio1.onclick = function() {
